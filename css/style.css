@@ -75,7 +75,7 @@ section{
 .inline-btn,
 .inline-option-btn,
 .inline-delete-btn{
-  border-radius: .5rem;
+  border-radius: 999px;
   padding: 1rem 3rem;
   font-size: 1.8rem;
   color: #fff;
@@ -381,12 +381,19 @@ section{
   gap: 1.5rem;
   align-items: flex-start;
   justify-content: center;
+
+
 }
 
 .quick-select .box-container .box{
   border-radius: .5rem;
   background-color: var(--white);
   padding: 2rem;
+  border: 2px solid #585fa2;
+  background: transparent;
+  color: #fff;
+  text-transform: unset;
+  letter-spacing: unset;
 }
 
 .quick-select .box-container .box .title{
