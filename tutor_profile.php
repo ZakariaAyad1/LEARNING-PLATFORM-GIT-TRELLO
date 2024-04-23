@@ -135,7 +135,6 @@ if(isset($_POST['tutor_fetch'])){
 
 
 
-<?php include 'components/footer.php'; ?>    
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>

@@ -1312,23 +1312,6 @@ section{
   overflow-x: hidden;
 }
 
-.footer{
-  position: sticky;
-  bottom: 0; right: 0; left: 0;
-  background-color: var(--white);
-  border-top: var(--border);
-  padding:2.5rem 2rem;
-  text-align: center;
-  color: var(--black);
-  font-size: 2rem;
-  margin-top: 1.5rem;
-  z-index: 1000;
-  /* padding-bottom: 9.5rem; */
-}
-
-.footer span{
-  color: var(--main-color);
-}
 
 /* media queries  */
 

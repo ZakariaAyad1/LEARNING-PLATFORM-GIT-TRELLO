@@ -113,10 +113,6 @@ if(isset($_POST['remove'])){
 
 
 
-
-<?php include 'components/footer.php'; ?>
-
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>
