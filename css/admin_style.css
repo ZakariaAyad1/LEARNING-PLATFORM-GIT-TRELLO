@@ -105,7 +105,7 @@ section{
 
 .option-btn,
 .inline-option-btn{
-  background-color: #e7005e;
+  background-color: #e7005e !important;
 }
 
 .delete-btn,
@@ -207,7 +207,7 @@ section{
 
 .header .flex .search-form{
   width: 50rem;
-  border-radius: .5rem;
+  border-radius: 25px;
   display: flex;
   align-items: center;
   gap: 2rem;

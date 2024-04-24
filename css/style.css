@@ -4,9 +4,10 @@ html body {
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
 
+
 :root{
   --main-color:#e7005e;
-  --red:#e74c3c;
+  --red:#ff8fbc;
   --oragen:#e7005e;
   --white:#242145;
   --black:#ffffff;
@@ -16,7 +17,7 @@ html body {
 }
 
 *{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif; !important;
   margin: 0; padding: 0;
   box-sizing: border-box;
   outline: none; border: none;
@@ -166,12 +167,13 @@ section{
 
 .empty{
   background-color: var(--white);
-  border-radius: .5rem;
+  border-radius: 999px;
   padding: 1.5rem;
   text-align: center;
   width: 100%;
   font-size: 2rem;
   color: var(--red);
+
 }
 
 .heading{
@@ -207,7 +209,7 @@ section{
 
 .header .flex .search-form{
   width: 50rem;
-  border-radius: .5rem;
+  border-radius: 25px;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -236,18 +238,18 @@ section{
 .header .flex .icons div{
   font-size: 2rem;
   color: var(--black);
-  border-radius: .5rem;
+  border-radius: 15px;
   height: 4.5rem;
   cursor: pointer;
   width: 4.5rem;
   line-height: 4.4rem;
-  background-color: var(--light-bg);
+  background-color: var(--main-color);
   text-align: center;
   margin-left: .5rem;
 }
 
 .header .flex .icons div:hover{
-  background-color: var(--black);
+  background-color: var(--light-color);
   color:var(--white);
 }
 
@@ -394,6 +396,7 @@ section{
   color: #fff;
   text-transform: unset;
   letter-spacing: unset;
+  padding-bottom: 35px;
 }
 
 .quick-select .box-container .box .title{
@@ -429,9 +432,11 @@ section{
 
 .quick-select .box-container .box .flex a{
   padding: 1rem 1.5rem;
-  border-radius: .5rem;
+  border: 2px solid #b3b6d6;
+  border-radius: 999px;
+  background: transparent;
   font-size: 1.6rem;
-  background-color: var(--light-bg);
+
 }
 
 .quick-select .box-container .box .flex a i{
