@@ -5,11 +5,11 @@ html body {
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
 
 :root{
-  --main-color:#8e44ad;
+  --main-color:#e7005e;
   --red:#e74c3c;
-  --oragen:#f39c12;
-  --white:#fff;
-  --black:#2c3e50;
+  --oragen:#e7005e;
+  --white:#242145;
+  --black:#ffffff;
   --light-color:#888;
   --light-bg:#eee;
   --border:.1rem solid rgba(0,0,0,.2);
@@ -105,7 +105,7 @@ section{
 
 .option-btn,
 .inline-option-btn{
-  background-color: var(--oragen);
+  background-color: #e7005e;
 }
 
 .delete-btn,
@@ -384,7 +384,7 @@ section{
 }
 
 .quick-select .box-container .box{
-  border-radius: .5rem;
+  border-radius: 25px;
   background-color: var(--white);
   padding: 2rem;
 }

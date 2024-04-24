@@ -77,18 +77,7 @@ $total_bookmarked = $select_bookmark->rowCount();
       }
       ?>
 
-            <div class="box">
-                <h3 class="title">Modules</h3>
-                <div class="flex">
-                    <a href="#"><i class="fas fa-code"></i><span>Programmation web1</span></a>
-                    <a href="#"><i class="fa-solid fa-gears"></i><span>Electronique Numérique</span></a>
-                    <a href="#"><i class="fa-solid fa-c"></i><span>Programmation avancé</span></a>
-                    <a href="#"><i class="fa-brands fa-contao"></i><span>Compilation & Theorie de Language</span></a>
-                    <a href="#"><i class="fas fa-cog"></i><span>Système d'exploitation</span></a>
-                    <a href="#"><i class="fa-solid fa-laptop-code"></i><span>Architecture des Ordinateurs</span></a>
-
-                </div>
-            </div>
+            
 
             <div class="box">
                 <h3 class="title">popular topics</h3>
@@ -106,6 +95,18 @@ $total_bookmarked = $select_bookmark->rowCount();
                 <h3 class="title">become a tutor</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium.</p>
                 <a href="admin/register.php" class="inline-btn">get started</a>
+            </div>
+            <div class="box">
+                <h3 class="title">Modules</h3>
+                <div class="flex">
+                    <a href="#"><i class="fas fa-code"></i><span>Programmation web1</span></a>
+                    <a href="#"><i class="fa-solid fa-gears"></i><span>Electronique Numérique</span></a>
+                    <a href="#"><i class="fa-solid fa-c"></i><span>Programmation avancé</span></a>
+                    <a href="#"><i class="fa-brands fa-contao"></i><span>Compilation & Theorie de Language</span></a>
+                    <a href="#"><i class="fas fa-cog"></i><span>Système d'exploitation</span></a>
+                    <a href="#"><i class="fa-solid fa-laptop-code"></i><span>Architecture des Ordinateurs</span></a>
+
+                </div>
             </div>
 
         </div>
