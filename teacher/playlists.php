@@ -49,12 +49,12 @@ if(isset($_POST['delete'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/admin_style.css">
+   <link rel="stylesheet" href="../css/teacher_style.css">
 
 </head>
 <body>
 
-<?php include '../components/admin_header.php'; ?>
+<?php include '../components/teacher_header.php'; ?>
 
 <section class="playlists">
 
@@ -120,7 +120,7 @@ if(isset($_POST['delete'])){
 
 
 
-<script src="../js/admin_script.js"></script>
+<script src="../js/teacher_script.js"></script>
 
 <script>
    document.querySelectorAll('.playlists .box-container .box .description').forEach(content => {
