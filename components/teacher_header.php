@@ -15,7 +15,7 @@ if(isset($message)){
 
    <section class="flex">
 
-      <a href="dashboard.php" class="logo">Admin.</a>
+      <a href="dashboard.php" class="logo">Teacher</a>
 
       <form action="search_page.php" method="post" class="search-form">
          <input type="text" name="search" placeholder="search here..." required maxlength="100">
@@ -44,7 +44,7 @@ if(isset($message)){
             <a href="login.php" class="option-btn">login</a>
             <a href="register.php" class="option-btn">register</a>
          </div>
-         <a href="../components/admin_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
+         <a href="../components/teacher_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
          <?php
             }else{
          ?>
@@ -101,7 +101,7 @@ if(isset($message)){
       <a href="playlists.php"><i class="fa-solid fa-bars-staggered"></i><span>playlists</span></a>
       <a href="contents.php"><i class="fas fa-graduation-cap"></i><span>contents</span></a>
       <a href="comments.php"><i class="fas fa-comment"></i><span>comments</span></a>
-      <a href="../components/admin_logout.php" onclick="return confirm('logout from this website?');"><i class="fas fa-right-from-bracket"></i><span>logout</span></a>
+      <a href="../components/teacher_logout.php" onclick="return confirm('logout from this website?');"><i class="fas fa-right-from-bracket"></i><span>logout</span></a>
    </nav>
 
 </div>
