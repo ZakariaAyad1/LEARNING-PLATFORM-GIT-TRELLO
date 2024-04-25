@@ -7,8 +7,6 @@ if(isset($_POST['submit'])){
    $id = unique_id();
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
-   $profession = $_POST['profession'];
-   $profession = filter_var($profession, FILTER_SANITIZE_STRING);
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $pass = sha1($_POST['pass']);
@@ -33,8 +31,8 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $message[] = 'confirm passowrd not matched!';
       }else{
-         $insert_tutor = $conn->prepare("INSERT INTO `tutors`(id, name, profession, email, password, image) VALUES(?,?,?,?,?,?)");
-         $insert_tutor->execute([$id, $name, $profession, $email, $cpass, $rename]);
+         $insert_tutor = $conn->prepare("INSERT INTO `tutors`(id, name, email, password, image) VALUES(?,?,?,?,?)");
+         $insert_tutor->execute([$id, $name, $email, $cpass, $rename]);
          move_uploaded_file($image_tmp_name, $image_folder);
          $message[] = 'new tutor registered! please login now';
       }
@@ -83,21 +81,21 @@ if(isset($message)){
       <h3>register new</h3>
       <div class="flex">
          <div class="col">
-            <p>your name <span>*</span></p>
+            <p>Your name <span>*</span></p>
             <input type="text" name="name" placeholder="enter your name" maxlength="50" required class="box">
-            <p>your email <span>*</span></p>
+            <p>Your email <span>*</span></p>
             <input type="email" name="email" placeholder="enter your email" maxlength="20" required class="box">
          </div>
          <div class="col">
-            <p>your password <span>*</span></p>
+            <p>Your password <span>*</span></p>
             <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-            <p>confirm password <span>*</span></p>
+            <p>Confirm password <span>*</span></p>
             <input type="password" name="cpass" placeholder="confirm your password" maxlength="20" required class="box">
-            <p>select pic <span>*</span></p>
+            <p>Select pic <span>*</span></p>
             <input type="file" name="image" accept="image/*" required class="box">
          </div>
       </div>
-      <p class="link">already have an account? <a href="login.php">login now</a></p>
+      <p class="link">Already have an account? <a href="login.php">Login now</a></p>
       <input type="submit" name="submit" value="register now" class="btn">
    </form>
 
