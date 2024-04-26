@@ -17,7 +17,7 @@ html body {
 }
 
 *{
-  font-family: 'Roboto', sans-serif; !important;
+  font-family: 'Roboto', sans-serif !important;
   margin: 0; padding: 0;
   box-sizing: border-box;
   outline: none; border: none;
@@ -50,14 +50,6 @@ html{
 body{
   background-color: var(--light-bg);
   padding-left: 30rem;
-}
-
-body.dark{
-  --white:#222;
-  --black:#fff;
-  --light-color:#aaa;
-  --light-bg:#333;
-  --border:.1rem solid rgba(255,255,255,.2);
 }
 
 body.active{
