@@ -14,8 +14,8 @@ if(isset($_POST['submit'])){
    $row = $select_admin->fetch(PDO::FETCH_ASSOC);
    
    if($select_admin->rowCount() > 0){
-     setcookie('admin_id', $row['id'], time() + 60*60*24*30, '/');
-     header('location:dashboard.php');
+      setcookie('tutor_id', $row['id'], time() + 60*60*24*30, '/');
+      header('location:dashboard.php');
    }else{
       $message[] = 'incorrect email or password!';
    }
