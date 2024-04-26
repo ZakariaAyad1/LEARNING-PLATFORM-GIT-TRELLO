@@ -68,5 +68,22 @@ CREATE TABLE `users` (
   `password` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `admin` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--insert admin
+INSERT INTO `admin`( `name`, `email`, `password`, `image`) VALUES ('Admin','chioua.hiba1@gmail.com','ab28cfc74820d6462adabc4f2c4221b803a83507','cDM2EJ51so4lEcXg3O0M.avif');
 COMMIT;
+
+
+password:
+admin@
+
 
