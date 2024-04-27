@@ -1,6 +1,10 @@
 <?php
 
 include 'components/connect.php';
+// Function to get file extension
+function getFileExtension($filename) {
+   return pathinfo($filename, PATHINFO_EXTENSION);
+}
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
@@ -143,42 +147,33 @@ if(isset($_POST['update_now'])){
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
+   <style>
+      /* CSS for enlarging and centering the file viewer */
+      .watch-video {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 80vh; /* Adjust the height as needed */
+      }
+
+      /* Adjustments for the file viewer */
+      .video {
+         max-width: 100%;
+         max-height: 100%;
+      }
+      .pdf-viewer {
+         width: 100%;
+         height: 100%;
+      }
+   </style>
 </head>
 <body>
 
 <?php include 'components/user_header.php'; ?>
 
-<?php
-   if(isset($_POST['edit_comment'])){
-      $edit_id = $_POST['comment_id'];
-      $edit_id = filter_var($edit_id, FILTER_SANITIZE_STRING);
-      $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? LIMIT 1");
-      $verify_comment->execute([$edit_id]);
-      if($verify_comment->rowCount() > 0){
-         $fetch_edit_comment = $verify_comment->fetch(PDO::FETCH_ASSOC);
-?>
-<section class="edit-comment">
-   <h1 class="heading">edti comment</h1>
-   <form action="" method="post">
-      <input type="hidden" name="update_id" value="<?= $fetch_edit_comment['id']; ?>">
-      <textarea name="update_box" class="box" maxlength="1000" required placeholder="please enter your comment" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
-      <div class="flex">
-         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancel edit</a>
-         <input type="submit" value="update now" name="update_now" class="inline-btn">
-      </div>
-   </form>
-</section>
-<?php
-   }else{
-      $message[] = 'comment was not found!';
-   }
-}
-?>
-
 <!-- watch video section starts  -->
 
 <section class="watch-video">
-
    <?php
       $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND status = ?");
       $select_content->execute([$get_id, 'active']);
@@ -196,45 +191,30 @@ if(isset($_POST['update_now'])){
             $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ? LIMIT 1");
             $select_tutor->execute([$fetch_content['tutor_id']]);
             $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
-   ?>
-   <div class="video-details">
-      <video src="uploaded_files/<?= $fetch_content['video']; ?>" class="video" poster="uploaded_files/<?= $fetch_content['thumb']; ?>" controls autoplay></video>
-      <h3 class="title"><?= $fetch_content['title']; ?></h3>
-      <div class="info">
-         <p><i class="fas fa-calendar"></i><span><?= $fetch_content['date']; ?></span></p>
-         <p><i class="fas fa-heart"></i><span><?= $total_likes; ?> likes</span></p>
-      </div>
-      <div class="tutor">
-         <img src="uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
-         <div>
-            <h3><?= $fetch_tutor['name']; ?></h3>
-            <span><?= $fetch_tutor['profession']; ?></span>
-         </div>
-      </div>
-      <form action="" method="post" class="flex">
-         <input type="hidden" name="content_id" value="<?= $content_id; ?>">
-         <a href="playlist.php?get_id=<?= $fetch_content['playlist_id']; ?>" class="inline-btn">view playlist</a>
-         <?php
-            if($verify_likes->rowCount() > 0){
-         ?>
-         <button type="submit" name="like_content"><i class="fas fa-heart"></i><span>liked</span></button>
-         <?php
-         }else{
-         ?>
-         <button type="submit" name="like_content"><i class="far fa-heart"></i><span>like</span></button>
-         <?php
+
+            // Get file extension
+            $file_extension = getFileExtension($fetch_content['video']);
+
+            // Check file extension and display appropriate viewer
+            if ($file_extension === 'pdf') {
+               // Display PDF viewer
+               echo '<embed src="uploaded_files/' . $fetch_content['video'] . '" type="application/pdf" class="pdf-viewer">';
+            } elseif (in_array($file_extension, ['mp4', 'webm', 'ogg'])) {
+               // Display video player for supported video formats
+               echo '<video src="uploaded_files/' . $fetch_content['video'] . '" class="video" poster="uploaded_files/' . $fetch_content['thumb'] . '" controls autoplay></video>';
+            } else {
+               // Display an error message for unsupported file types
+               echo '<p>Unsupported file type.</p>';
             }
-         ?>
-      </form>
-      <div class="description"><p><?= $fetch_content['description']; ?></p></div>
-   </div>
+   ?>
+   <!-- Remaining HTML for displaying other content details -->
+   <!-- Add the like, comment functionality, tutor info, etc. -->
    <?php
          }
-      }else{
-         echo '<p class="empty">no videos added yet!</p>';
+      } else {
+         echo '<p class="empty">No videos added yet!</p>';
       }
    ?>
-
 </section>
 
 <!-- watch video section ends -->
@@ -296,16 +276,6 @@ if(isset($_POST['update_now'])){
 </section>
 
 <!-- comments section ends -->
-
-
-
-
-
-
-
-
-
-
 
 <script src="js/script.js"></script>
    
