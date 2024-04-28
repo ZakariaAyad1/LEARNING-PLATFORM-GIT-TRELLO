@@ -29,7 +29,7 @@ $total_bookmarked = $select_bookmark->rowCount();
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>profile</title>
+   <title>Profile</title>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -47,15 +47,18 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 <section class="profile">
 
-   <h1 class="heading">profile details</h1>
+   <h1 class="heading">Profile Details</h1>
 
    <div class="details">
 
       <div class="user">
          <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
-         <p>student</p>
-         <a href="update.php" class="inline-btn">update profile</a>
+         <p>Student</p>
+         <a href="update.php" class="inline-btn">Update Profile</a>
+         <form action="delete_account.php" method="post">
+            <button type="submit" name="delete_account">Delete Account</button>
+         </form>
       </div>
 
       <div class="box-container">
@@ -65,10 +68,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-bookmark"></i>
                <div>
                   <h3><?= $total_bookmarked; ?></h3>
-                  <span>saved playlists</span>
+                  <span>Saved Playlists</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view playlists</a>
+            <a href="#" class="inline-btn">View Playlists</a>
          </div>
 
          <div class="box">
@@ -76,10 +79,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-heart"></i>
                <div>
                   <h3><?= $total_likes; ?></h3>
-                  <span>liked tutorials</span>
+                  <span>Liked Tutorials</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view liked</a>
+            <a href="#" class="inline-btn">View Liked</a>
          </div>
 
          <div class="box">
@@ -87,10 +90,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-comment"></i>
                <div>
                   <h3><?= $total_comments; ?></h3>
-                  <span>video comments</span>
+                  <span>Video Comments</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view comments</a>
+            <a href="#" class="inline-btn">View Comments</a>
          </div>
 
       </div>
@@ -99,16 +102,9 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 </section>
 
-<!-- profile section ends -->
+<!-- Profile section ends -->
 
-
-
-
-
-
-
-
-<!-- custom js file link  -->
+<!-- Custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

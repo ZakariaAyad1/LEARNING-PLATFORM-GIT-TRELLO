@@ -51,12 +51,10 @@ if(isset($_POST['delete_comment'])){
 
 <?php include '../components/teacher_header.php'; ?>
    
-
 <section class="comments">
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">User Comments</h1>
 
-   
    <div class="show-comments">
       <?php
          $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
@@ -70,33 +68,28 @@ if(isset($_POST['delete_comment'])){
       <div class="box" style="<?php if($fetch_comment['tutor_id'] == $tutor_id){echo 'order:-1;';} ?>">
          <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_content['title']; ?> - </p><a href="view_content.php?get_id=<?= $fetch_content['id']; ?>">view content</a></div>
          <p class="text"><?= $fetch_comment['comment']; ?></p>
+         
+         <!-- Form for replying to the comment -->
+         <form action="reply_comment.php" method="post" class="reply-form">
+            <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
+            <textarea name="reply" placeholder="Your reply"></textarea>
+            <button type="submit" name="reply_comment" class="reply-btn">Reply</button>
+         </form>
+         
          <form action="" method="post">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
-            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete comment</button>
+            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('Delete this comment?');">Delete Comment</button>
          </form>
       </div>
       <?php
        }
       }else{
-         echo '<p class="empty">no comments added yet!</p>';
+         echo '<p class="empty">No comments added yet!</p>';
       }
       ?>
-      </div>
+   </div>
    
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include '../components/footer.php'; ?>
 

@@ -78,6 +78,16 @@ CREATE TABLE `admin` (
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `comment_replies` (
+  `comment_id` INT NOT NULL AUTO_INCREMENT,
+  `tutor_id` INT NOT NULL ,
+  `reply_content` varchar(888) NOT NULL ,
+  PRIMARY KEY(`comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
 --insert admin
 INSERT INTO `admin`( `name`, `email`, `password`, `image`) VALUES ('Admin','chioua.hiba1@gmail.com','ab28cfc74820d6462adabc4f2c4221b803a83507','cDM2EJ51so4lEcXg3O0M.avif');
 COMMIT;

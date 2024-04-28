@@ -69,16 +69,9 @@ if(isset($_POST['add_comment'])){
 
       if($select_content->rowCount() > 0){
 
-         $select_comment = $conn->prepare("SELECT * FROM `comments` WHERE content_id = ? AND user_id = ? AND tutor_id = ? AND comment = ?");
-         $select_comment->execute([$content_id, $user_id, $tutor_id, $comment_box]);
-
-         if($select_comment->rowCount() > 0){
-            $message[] = 'comment already added!';
-         }else{
-            $insert_comment = $conn->prepare("INSERT INTO `comments`(id, content_id, user_id, tutor_id, comment) VALUES(?,?,?,?,?)");
-            $insert_comment->execute([$id, $content_id, $user_id, $tutor_id, $comment_box]);
-            $message[] = 'new comment added!';
-         }
+         $insert_comment = $conn->prepare("INSERT INTO `comments`(id, content_id, user_id, tutor_id, comment) VALUES(?,?,?,?,?)");
+         $insert_comment->execute([$id, $content_id, $user_id, $tutor_id, $comment_box]);
+         $message[] = 'new comment added!';
 
       }else{
          $message[] = 'something went wrong!';
@@ -95,35 +88,33 @@ if(isset($_POST['delete_comment'])){
    $delete_id = $_POST['comment_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
 
-   $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ?");
-   $verify_comment->execute([$delete_id]);
+   $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? AND user_id = ?");
+   $verify_comment->execute([$delete_id, $user_id]);
 
    if($verify_comment->rowCount() > 0){
       $delete_comment = $conn->prepare("DELETE FROM `comments` WHERE id = ?");
       $delete_comment->execute([$delete_id]);
       $message[] = 'comment deleted successfully!';
    }else{
-      $message[] = 'comment already deleted!';
+      $message[] = 'comment not found or you are not authorized to delete it!';
    }
 
 }
 
-if(isset($_POST['update_now'])){
+if(isset($_POST['edit_comment'])){
 
-   $update_id = $_POST['update_id'];
-   $update_id = filter_var($update_id, FILTER_SANITIZE_STRING);
-   $update_box = $_POST['update_box'];
-   $update_box = filter_var($update_box, FILTER_SANITIZE_STRING);
+   $edit_id = $_POST['comment_id'];
+   $edit_id = filter_var($edit_id, FILTER_SANITIZE_STRING);
 
-   $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? AND comment = ?");
-   $verify_comment->execute([$update_id, $update_box]);
+   $select_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? AND user_id = ?");
+   $select_comment->execute([$edit_id, $user_id]);
+   $fetch_comment = $select_comment->fetch(PDO::FETCH_ASSOC);
 
-   if($verify_comment->rowCount() > 0){
-      $message[] = 'comment already added!';
+   if($select_comment->rowCount() > 0){
+      // Here you can include HTML and PHP code for editing the comment, and update it accordingly
+      $message[] = 'Edit your comment here!';
    }else{
-      $update_comment = $conn->prepare("UPDATE `comments` SET comment = ? WHERE id = ?");
-      $update_comment->execute([$update_box, $update_id]);
-      $message[] = 'comment edited successfully!';
+      $message[] = 'Comment not found or you are not authorized to edit it!';
    }
 
 }
@@ -136,15 +127,15 @@ if(isset($_POST['update_now'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>watch video</title>
+   <title>Watch Video</title>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-   <!-- font awesome cdn link  -->
+   <!-- Font Awesome CDN link -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
+   <!-- Custom CSS file link -->
    <link rel="stylesheet" href="css/style.css">
 
    <style>
@@ -171,8 +162,7 @@ if(isset($_POST['update_now'])){
 
 <?php include 'components/user_header.php'; ?>
 
-<!-- watch video section starts  -->
-
+<!-- Watch Video section starts -->
 <section class="watch-video">
    <?php
       $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND status = ?");
@@ -216,24 +206,21 @@ if(isset($_POST['update_now'])){
       }
    ?>
 </section>
+<!-- Watch Video section ends -->
 
-<!-- watch video section ends -->
-
-<!-- comments section starts  -->
-
+<!-- Comments section starts -->
 <section class="comments">
 
-   <h1 class="heading">add a comment</h1>
+   <h1 class="heading">Add a Comment</h1>
 
    <form action="" method="post" class="add-comment">
       <input type="hidden" name="content_id" value="<?= $get_id; ?>">
-      <textarea name="comment_box" required placeholder="write your comment..." maxlength="1000" cols="30" rows="10"></textarea>
-      <input type="submit" value="add comment" name="add_comment" class="inline-btn">
+      <textarea name="comment_box" required placeholder="Write your comment..." maxlength="1000" cols="30" rows="10"></textarea>
+      <input type="submit" value="Add Comment" name="add_comment" class="inline-btn">
    </form>
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">User Comments</h1>
 
-   
    <div class="show-comments">
       <?php
          $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE content_id = ?");
@@ -258,24 +245,50 @@ if(isset($_POST['update_now'])){
          ?>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
-            <button type="submit" name="edit_comment" class="inline-option-btn">edit comment</button>
-            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete comment</button>
+            <button type="submit" name="edit_comment" class="inline-option-btn">Edit Comment</button>
+            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('Delete this comment?');">Delete Comment</button>
          </form>
          <?php
          }
          ?>
+         <!-- Add a reply form for each comment -->
+         <form action="" method="post" class="add-reply">
+            <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
+            <textarea name="reply_box" required placeholder="Write your reply..." maxlength="100000" cols="305" rows="58"></textarea>
+            <input type="submit" value="Add Reply" name="add_reply" class="inline-btn">
+         </form>
+         <!-- Display existing replies for each comment -->
+         <div class="replies">
+            <?php
+               // Retrieve and display replies for the current comment
+               $select_replies = $conn->prepare("SELECT * FROM `comment_replies` WHERE comment_id = ?");
+               $select_replies->execute([$fetch_comment['id']]);
+               if($select_replies->rowCount() > 0){
+                  while($fetch_reply = $select_replies->fetch(PDO::FETCH_ASSOC)){
+                     // Display each reply
+            ?>
+            <div class="reply">
+               <span><?= $fetch_reply['date']; ?></span>
+               <p><?= $fetch_reply['reply_content']; ?></p>
+            </div>
+            <?php
+                  }
+               } else {
+                  echo '<p class="empty">No replies yet!</p>';
+               }
+            ?>
+         </div>
       </div>
       <?php
        }
       }else{
-         echo '<p class="empty">no comments added yet!</p>';
+         echo '<p class="empty">No comments added yet!</p>';
       }
       ?>
-      </div>
-   
-</section>
+   </div>
 
-<!-- comments section ends -->
+</section>
+<!-- Comments section ends -->
 
 <script src="js/script.js"></script>
    
