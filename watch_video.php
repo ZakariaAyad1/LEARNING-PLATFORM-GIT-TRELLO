@@ -1,6 +1,7 @@
 <?php
 
 include 'components/connect.php';
+
 // Function to get file extension
 function getFileExtension($filename) {
    return pathinfo($filename, PATHINFO_EXTENSION);
@@ -148,7 +149,7 @@ if(isset($_POST['edit_comment'])){
       }
 
       /* Adjustments for the file viewer */
-      .video {
+      .video, .audio {
          max-width: 100%;
          max-height: 100%;
       }
@@ -192,6 +193,9 @@ if(isset($_POST['edit_comment'])){
             } elseif (in_array($file_extension, ['mp4', 'webm', 'ogg'])) {
                // Display video player for supported video formats
                echo '<video src="uploaded_files/' . $fetch_content['video'] . '" class="video" poster="uploaded_files/' . $fetch_content['thumb'] . '" controls autoplay></video>';
+            } elseif ($file_extension === 'mp3') {
+               // Display audio player for MP3 files
+               echo '<audio controls class="audio"><source src="uploaded_files/' . $fetch_content['video'] . '" type="audio/mpeg">Your browser does not support the audio element.</audio>';
             } else {
                // Display an error message for unsupported file types
                echo '<p>Unsupported file type.</p>';

@@ -89,10 +89,14 @@ $total_bookmarked = $select_bookmark->rowCount();
                 <p>become a teacher by creating an account an putting videos or pdfs or ppts, road vers l3alamia</p>
                 <a href="teacher/register.php" class="inline-btn">get started</a>
             </div>
+            <div class="box admin">
+                <h1>if you are admin tap here </h3>
+                <a href="admin/login.php" class="inline-btn">go to admin page </a>
+            </div>
             <div class="box">
                 <h3 class="title">Modules</h3>
                 <div class="flex">
-                    <a href="#"><i class="fas fa-code"></i><span>Programmation web1</span></a>
+                    <a href="playlist.php?get_id=6gYI2q4qQjrQAOMdPQrH"><i class="fas fa-code"></i><span>Programmation web1</span></a>
                     <a href="#"><i class="fa-solid fa-gears"></i><span>Electronique Numérique</span></a>
                     <a href="#"><i class="fa-solid fa-c"></i><span>Programmation avancé</span></a>
                     <a href="#"><i class="fa-brands fa-contao"></i><span>Compilation & Theorie de Language</span></a>
