@@ -1079,6 +1079,11 @@ section{
    }
 
 }
+#respond{
+border: 1px solid black;
+color: white;
+background-color: #8e44ad ;
+}
 
 @media (max-width:450px){
    

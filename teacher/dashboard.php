@@ -2,11 +2,11 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
-}else{
-   $tutor_id = '';
-   header('location:login.php');
+if (isset($_COOKIE['tutor_id'])) {
+    $tutor_id = $_COOKIE['tutor_id'];
+} else {
+    $tutor_id = '';
+    header('location:login.php');
 }
 
 $select_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
@@ -29,75 +29,75 @@ $total_comments = $select_comments->rowCount();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/teacher_style.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../css/teacher_style.css">
 
 </head>
+
 <body>
 
-<?php include '../components/teacher_header.php'; ?>
-   
-<section class="dashboard">
+    <?php include '../components/teacher_header.php'; ?>
 
-   <h1 class="heading">dashboard</h1>
+    <section class="dashboard">
 
-   <div class="box-container">
+        <h1 class="heading">dashboard page</h1>
 
-      <div class="box">
-         <h3>welcome!</h3>
-         <p><?= $fetch_profile['name']; ?></p>
-         <a href="profile.php" class="btn">view profile</a>
-      </div>
+        <div class="box-container">
 
-      <div class="box">
-         <h3><?= $total_contents; ?></h3>
-         <p>total contents</p>
-         <a href="add_content.php" class="btn">add new content</a>
-      </div>
+            <div class="box">
+                <h3>welcome again!</h3>
+                <p>user : <?= $fetch_profile['name']; ?></p>
+                <a href="profile.php" class="btn">View your profile</a>
+            </div>
 
-      <div class="box">
-         <h3><?= $total_playlists; ?></h3>
-         <p>total playlists</p>
-         <a href="add_playlist.php" class="btn">add new playlist</a>
-      </div>
+            <div class="box">
+                <h3>Total : <?= $total_contents; ?></h3>
+                <p>total contents</p>
+                <a href="add_content.php" class="btn">Add content</a>
+            </div>
 
-      <div class="box">
-         <h3><?= $total_likes; ?></h3>
-         <p>total likes</p>
-         <a href="contents.php" class="btn">view contents</a>
-      </div>
+            <div class="box">
+                <h3>Total : <?= $total_playlists; ?></h3>
+                <p>total playlists</p>
+                <a href="add_playlist.php" class="btn">Add playlist</a>
+            </div>
 
-      <div class="box">
-         <h3><?= $total_comments; ?></h3>
-         <p>total comments</p>
-         <a href="comments.php" class="btn">view comments</a>
-      </div>
+            <div class="box">
+                <h3>Total : <?= $total_likes; ?></h3>
+                <p>total likes</p>
+                <a href="contents.php" class="btn">View contents</a>
+            </div>
 
-      <div class="box">
-         <h3>quick select</h3>
-         <p>login or register</p>
-         <div class="flex-btn">
-            <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">register</a>
-         </div>
-      </div>
-
-   </div>
-
-</section>
+            <div class="box">
+                <h3>Total : <?= $total_comments; ?></h3>
+                <p>total comments</p>
+                <a href="comments.php" class="btn">View comments</a>
+            </div>
 
 
 
+            <div class="box">
+                <h3>please</h3>
+                <p>login - register</p>
+                <div class="flex-btn">
+                    <a href="login.php" class="option-btn">login</a>
+                    <a href="register.php" class="option-btn">register</a>
+                </div>
+            </div>
 
+        </div>
+
+    </section>
 
 
 
@@ -111,7 +111,13 @@ $total_comments = $select_comments->rowCount();
 
 
 
-<script src="../js/teacher_script.js"></script>
+
+
+
+
+    <script src="../js/teacher_script.js"></script>
 
 </body>
+
 </html>
+<h3>Total : <?= $total_comments; ?></h3>

@@ -1,12 +1,34 @@
 <?php
-
 include 'components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
+    $user_id = $_COOKIE['user_id'];
 }else{
-   $user_id = '';
-   header('location:login.php');
+    $user_id = '';
+    header('location:login.php');
+}
+
+// Vérifier si une demande de suppression existe pour cet utilisateur
+$select_request = $conn->prepare("SELECT * FROM deletion_requests WHERE user_id = ?");
+$select_request->execute([$user_id]);
+$request_exists = $select_request->fetch(PDO::FETCH_ASSOC);
+
+// Initialiser le message à vide
+$message = '';
+
+// Vérifier si l'utilisateur a soumis une demande de suppression
+if(isset($_POST['delete_account'])) {
+    // Si une demande de suppression existe, afficher un message d'attente
+    if($request_exists) {
+        $message = "Votre demande de suppression est en attente de réponse de l'administrateur.";
+    } else {
+        // Insérer une demande de suppression dans la table deletion_requests
+        $insert_request = $conn->prepare("INSERT INTO deletion_requests (user_id) VALUES (?)");
+        $insert_request->execute([$user_id]);
+
+        // Afficher un message de confirmation
+        $message = "Votre demande de suppression a été envoyée à l'administrateur pour examen.";
+    }
 }
 
 $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ?");
@@ -57,8 +79,13 @@ $total_bookmarked = $select_bookmark->rowCount();
          <p>Student</p>
          <a href="update.php" class="inline-btn">Update Profile</a>
          <form action="delete_account.php" method="post">
-            <button type="submit" name="delete_account">Delete Account</button>
+            <!-- Bouton "Supprimer mon compte" -->
+            <button type="submit" name="delete_account">delete account</button>
          </form>
+         <!-- Afficher le message s'il existe -->
+         <?php if(!empty($message)): ?>
+            <p><?php echo $message; ?></p>
+         <?php endif; ?>
       </div>
 
       <div class="box-container">

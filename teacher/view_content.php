@@ -86,6 +86,12 @@ if(isset($_POST['delete_comment'])){
          width: 100%; /* Adjust the width as needed */
          height: 100%; /* Limit maximum height */
       }
+      .no-file-description {
+         font-size: 20px;
+         font-weight: bold;
+         text-align: center;
+         margin-top: 20px;
+      }
    </style>
 </head>
 <body>
@@ -115,19 +121,25 @@ if(isset($_POST['delete_comment'])){
    $video_path = "../uploaded_files/" . $fetch_content['video'];
    $video_extension = strtolower(pathinfo($video_path, PATHINFO_EXTENSION));
    ?>
-   <?php if ($video_extension === 'pdf') : ?>
-    <embed src="<?= $video_path ?>" type="application/pdf" class="pdf-viewer">
-    <p class="file-type">PDF</p>
-<?php elseif ($video_extension === 'pptx') : ?>
-    <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=<?= urlencode($video_path) ?>" frameborder="0"></iframe>
-    <p class="file-type">PowerPoint</p>
-<?php elseif (in_array($video_extension, ['jpg', 'jpeg', 'png', 'gif'])) : ?>
-    <img src="<?= $video_path ?>" alt="Image" class="image-viewer">
-    <p class="file-type">Image</p>
-<?php else : ?>
-    <video src="<?= $video_path ?>" autoplay controls poster="../uploaded_files/<?= $fetch_content['thumb']; ?>" class="video"></video>
-    <p class="file-type">Video</p>
-<?php endif; ?>
+   <?php if ($video_extension !== '') : ?>
+    <?php if ($video_extension === 'pdf') : ?>
+        <embed src="<?= $video_path ?>" type="application/pdf" class="pdf-viewer">
+        <p class="file-type">PDF</p>
+    <?php elseif ($video_extension === 'pptx') : ?>
+        <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=<?= urlencode($video_path) ?>" frameborder="0"></iframe>
+        <p class="file-type">PowerPoint</p>
+    <?php elseif (in_array($video_extension, ['jpg', 'jpeg', 'png', 'gif'])) : ?>
+        <img src="<?= $video_path ?>" alt="Image" class="image-viewer">
+        <p class="file-type">Image</p>
+    <?php else : ?>
+        <video src="<?= $video_path ?>" autoplay controls poster="../uploaded_files/<?= $fetch_content['thumb']; ?>" class="video"></video>
+        <p class="file-type">Video</p>
+    <?php endif; ?>
+   <?php endif; ?>
+
+   <?php if (!empty($fetch_content['description'])) : ?>
+       <div class="description"><?= $fetch_content['description']; ?></div>
+   <?php endif; ?>
 
    <div class="date"><i class="fas fa-calendar"></i><span><?= $fetch_content['date']; ?></span></div>
    <h3 class="title"><?= $fetch_content['title']; ?></h3>
@@ -135,7 +147,6 @@ if(isset($_POST['delete_comment'])){
       <div><i class="fas fa-heart"></i><span><?= $total_likes; ?></span></div>
       <div><i class="fas fa-comment"></i><span><?= $total_comments; ?></span></div>
    </div>
-   <div class="description"><?= $fetch_content['description']; ?></div>
    <form action="" method="post">
       <div class="flex-btn">
          <input type="hidden" name="video_id" value="<?= $video_id; ?>">

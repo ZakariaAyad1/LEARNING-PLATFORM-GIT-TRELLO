@@ -44,23 +44,25 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
-   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/teacher_style.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../css/teacher_style.css">
 
 </head>
+
 <body style="padding-left: 0;">
 
-<?php
+    <?php
 if(isset($message)){
    foreach($message as $message){
       echo '
@@ -73,69 +75,72 @@ if(isset($message)){
 }
 ?>
 
-<!-- register section starts  -->
+    <!-- register section starts  -->
 
-<section class="form-container">
+    <section class="form-container">
 
-   <form class="register" action="" method="post" enctype="multipart/form-data">
-      <h3>register new</h3>
-      <div class="flex">
-         <div class="col">
-            <p>Your name <span>*</span></p>
-            <input type="text" name="name" placeholder="enter your name" maxlength="50" required class="box">
-            <p>Your email <span>*</span></p>
-            <input type="email" name="email" placeholder="enter your email" maxlength="20" required class="box">
-         </div>
-         <div class="col">
-            <p>Your password <span>*</span></p>
-            <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-            <p>Confirm password <span>*</span></p>
-            <input type="password" name="cpass" placeholder="confirm your password" maxlength="20" required class="box">
-            <p>Select pic <span>*</span></p>
-            <input type="file" name="image" accept="image/*" required class="box">
-         </div>
-      </div>
-      <p class="link">Already have an account? <a href="login.php">Login now</a></p>
-      <input type="submit" name="submit" value="register now" class="btn">
-   </form>
+        <form class="register" action="" method="post" enctype="multipart/form-data">
+            <h3>register</h3>
+            <div class="flex">
+                <div class="col">
+                    <p>Your name <span>*</span></p>
+                    <input type="text" name="name" placeholder="enter your name here" maxlength="50" required
+                        class="box">
+                    <p>Your email <span>*</span></p>
+                    <input type="email" name="email" placeholder="enter your email here" maxlength="20" required
+                        class="box">
+                </div>
+                <div class="col">
+                    <p>Your password <span>*</span></p>
+                    <input type="password" name="pass" placeholder="enter your password here" maxlength="20" required
+                        class="box">
+                    <p>Confirm your password <span>*</span></p>
+                    <input type="password" name="cpass" placeholder="confirm your password here" maxlength="20" required
+                        class="box">
+                    <p>Select pic <span>*</span></p>
+                    <input type="file" name="image" accept="image/*" required class="box">
+                </div>
+            </div>
+            <p class="link">do you have an account? <a href="login.php">Login now</a></p>
+            <input type="submit" name="submit" value="register now" class="btn">
+        </form>
 
-</section>
+    </section>
 
-<!-- registe section ends -->
-
-
-
-
-
-
+    <!-- registe section ends -->
 
 
 
 
 
 
-<script>
 
-let darkMode = localStorage.getItem('dark-mode');
-let body = document.body;
 
-const enabelDarkMode = () =>{
-   body.classList.add('dark');
-   localStorage.setItem('dark-mode', 'enabled');
-}
 
-const disableDarkMode = () =>{
-   body.classList.remove('dark');
-   localStorage.setItem('dark-mode', 'disabled');
-}
 
-if(darkMode === 'enabled'){
-   enabelDarkMode();
-}else{
-   disableDarkMode();
-}
 
-</script>
-   
+
+    <script>
+    let darkMode = localStorage.getItem('dark-mode');
+    let body = document.body;
+
+    const enabelDarkMode = () => {
+        body.classList.add('dark');
+        localStorage.setItem('dark-mode', 'enabled');
+    }
+
+    const disableDarkMode = () => {
+        body.classList.remove('dark');
+        localStorage.setItem('dark-mode', 'disabled');
+    }
+
+    if (darkMode === 'enabled') {
+        enabelDarkMode();
+    } else {
+        disableDarkMode();
+    }
+    </script>
+
 </body>
+
 </html>

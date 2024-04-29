@@ -80,7 +80,11 @@ if(isset($_POST['delete_video'])){
             <div><i class="fas fa-dot-circle" style="<?php if($fecth_videos['status'] == 'active'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"></i><span style="<?php if($fecth_videos['status'] == 'active'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"><?= $fecth_videos['status']; ?></span></div>
             <div><i class="fas fa-calendar"></i><span><?= $fecth_videos['date']; ?></span></div>
          </div>
-         <img src="../uploaded_files/<?= $fecth_videos['thumb']; ?>" class="thumb" alt="">
+         <?php if(empty($fecth_videos['thumb']) || empty($fecth_videos['video'])): ?>
+            <p class="big-font"><?php if(empty($fecth_videos['thumb'])){ echo 'tap to see video'; } else { echo 'text'; } ?></p>
+         <?php else: ?>
+            <img src="../uploaded_files/<?= $fecth_videos['thumb']; ?>" class="thumb" alt="">
+         <?php endif; ?>
          <h3 class="title"><?= $fecth_videos['title']; ?></h3>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="video_id" value="<?= $video_id; ?>">

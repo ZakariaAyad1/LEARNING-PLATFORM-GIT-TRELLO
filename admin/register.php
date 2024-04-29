@@ -22,19 +22,19 @@ if(isset($_POST['submit'])){
    $image_tmp_name = $_FILES['image']['tmp_name'];
    $image_folder = '../uploaded_files/'.$rename;
 
-   $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE email = ?");
-   $select_tutor->execute([$email]);
+   $select_admin = $conn->prepare("SELECT * FROM `admin` WHERE email = ?");
+   $select_admin->execute([$email]);
    
-   if($select_tutor->rowCount() > 0){
+   if($select_admin->rowCount() > 0){
       $message[] = 'email already taken!';
    }else{
       if($pass != $cpass){
          $message[] = 'confirm passowrd not matched!';
       }else{
-         $insert_tutor = $conn->prepare("INSERT INTO `tutors`(id, name, email, password, image) VALUES(?,?,?,?,?)");
-         $insert_tutor->execute([$id, $name, $email, $cpass, $rename]);
+         $insert_admin = $conn->prepare("INSERT INTO `admin`(id, name, email, password, image) VALUES(?,?,?,?,?)");
+         $insert_admin->execute([$id, $name, $email, $cpass, $rename]);
          move_uploaded_file($image_tmp_name, $image_folder);
-         $message[] = 'new tutor registered! please login now';
+         $message[] = 'new admin registered! please login now';
       }
    }
 

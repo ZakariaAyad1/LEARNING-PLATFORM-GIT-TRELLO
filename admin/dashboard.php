@@ -1,5 +1,4 @@
 <?php
-
 include '../components/connect.php';
 
 if(isset($_COOKIE['tutor_id'])){
@@ -9,21 +8,18 @@ if(isset($_COOKIE['tutor_id'])){
    header('location:login.php');
 }
 
-$select_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
-$select_contents->execute([$tutor_id]);
-$total_contents = $select_contents->rowCount();
+// Fetch teacher's content
+$select_teacher_content = $conn->prepare("SELECT * FROM content WHERE tutor_id = ?");
+$select_teacher_content->execute([$tutor_id]);
+$teacher_content = $select_teacher_content->fetchAll();
 
-$select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
-$select_playlists->execute([$tutor_id]);
-$total_playlists = $select_playlists->rowCount();
+// Fetch users
+$select_users = $conn->query("SELECT * FROM users");
+$users = $select_users->fetchAll();
 
-$select_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ?");
-$select_likes->execute([$tutor_id]);
-$total_likes = $select_likes->rowCount();
-
-$select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
-$select_comments->execute([$tutor_id]);
-$total_comments = $select_comments->rowCount();
+// Fetch tutors
+$select_tutors = $conn->query("SELECT * FROM tutors");
+$tutors = $select_tutors->fetchAll();
 
 ?>
 
@@ -41,6 +37,64 @@ $total_comments = $select_comments->rowCount();
    <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
 
+   <style>
+      .dashboard {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+
+      .box-container {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 2px;
+         max-width: 100%;
+         padding: 20px;
+      }
+
+      .box {
+         width: calc(185% - 200px);
+         left: 193px;
+         background-color: #f9f9f9;
+         border-radius: 80px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         padding: 20px;
+      }
+      .box1 {
+         width: calc(120% - 200 px);
+         background-color: #f9f9f9;
+         border-radius: 80px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         padding: 20px;
+         text-align: center;
+         position: relative ;
+         top: 600px;
+         right: 475px ;
+
+
+      }
+
+      table {
+         width: 100%;
+         border-collapse: collapse;
+      }
+
+      th, td {
+         padding: 10px;
+         text-align: left;
+         border-bottom: 1px solid #ddd;
+      }
+
+      th {
+         background-color: #f2f2f2;
+      }
+
+      .image-cell img {
+         max-width: 100px;
+         max-height: 100px;
+      }
+   </style>
 </head>
 <body>
 
@@ -48,35 +102,67 @@ $total_comments = $select_comments->rowCount();
    
 <section class="dashboard">
 
-   <h1 class="heading">dashboard</h1>
+   <h1 class="heading">Tableau de bord</h1>
 
    <div class="box-container">
 
       <div class="box">
-         <h3>Welcome Admin!</h3>
+         <h2>Tutors</h2>
+         <table>
+            <thead>
+               <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Profession</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Image</th>
+               </tr>
+            </thead>
+            <tbody>
+               <?php foreach ($tutors as $tutor) { ?>
+                  <tr>
+                     <td><?php echo $tutor['id']; ?></td>
+                     <td><?php echo $tutor['name']; ?></td>
+                     <td><?php echo $tutor['profession']; ?></td>
+                     <td><?php echo $tutor['email']; ?></td>
+                     <td><?php echo $tutor['password']; ?></td>
+                     <td class="image-cell"><img src="<?php echo $tutor['image']; ?>" alt="Tutor Image"></td>
+                  </tr>
+               <?php } ?>
+            </tbody>
+         </table>
       </div>
 
-          
+      <div class="box1">
+         <h2>Users</h2>
+         <table>
+            <thead>
+               <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Image</th>
+               </tr>
+            </thead>
+            <tbody>
+               <?php foreach ($users as $user) { ?>
+                  <tr>
+                     <td><?php echo $user['id']; ?></td>
+                     <td><?php echo $user['name']; ?></td>
+                     <td><?php echo $user['email']; ?></td>
+                     <td><?php echo $user['password']; ?></td>
+                     <td class="image-cell"><img src="<?php echo $user['image']; ?>" alt="User Image"></td>
+                  </tr>
+               <?php } ?>
+            </tbody>
+         </table>
+      </div>
 
    </div>
-
+   
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="../js/admin_script.js"></script>
 
