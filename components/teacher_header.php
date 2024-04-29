@@ -101,6 +101,7 @@ if(isset($message)){
       <a href="playlists.php"><i class="fa-solid fa-bars-staggered"></i><span>playlists</span></a>
       <a href="contents.php"><i class="fas fa-graduation-cap"></i><span>contents</span></a>
       <a href="comments.php"><i class="fas fa-comment"></i><span>comments</span></a>
+      <a href="announcements.php"><i class="fa-regular fa-bullhorn"></i><span>Announcements</span></a>
       <a href="../components/teacher_logout.php" onclick="return confirm('logout from this website?');"><i class="fas fa-right-from-bracket"></i><span>logout</span></a>
    </nav>
 

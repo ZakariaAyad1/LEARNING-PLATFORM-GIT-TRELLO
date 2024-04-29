@@ -95,6 +95,13 @@ CREATE TABLE `deletion_requests` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `Announcements` (
+    `announcement_id` INT PRIMARY KEY AUTO_INCREMENT,
+    `tutor_id` varchar(20) NOT NULL,
+    `title` VARCHAR(100) NOT NULL,
+    `content` TEXT NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 --insert admin
