@@ -113,7 +113,6 @@ $tutors = $select_tutors->fetchAll();
                <tr>
                   <th>ID</th>
                   <th>Name</th>
-                  <th>Profession</th>
                   <th>Email</th>
                   <th>Password</th>
                   <th>Image</th>
@@ -124,7 +123,6 @@ $tutors = $select_tutors->fetchAll();
                   <tr>
                      <td><?php echo $tutor['id']; ?></td>
                      <td><?php echo $tutor['name']; ?></td>
-                     <td><?php echo $tutor['profession']; ?></td>
                      <td><?php echo $tutor['email']; ?></td>
                      <td><?php echo $tutor['password']; ?></td>
                      <td class="image-cell"><img src="<?php echo $tutor['image']; ?>" alt="Tutor Image"></td>

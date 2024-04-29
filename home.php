@@ -99,9 +99,9 @@ $total_bookmarked = $select_bookmark->rowCount();
                     <a href="playlist.php?get_id=6gYI2q4qQjrQAOMdPQrH"><i class="fas fa-code"></i><span>web development</span></a>
                     <a href="#"><i class="fa-solid fa-gears"></i><span>Digital Electronics</span></a>
                     <a href="#"><i class="fa-solid fa-c"></i><span>Advanced Programming</span></a>
-                    <a href="#"><i class="fa-brands fa-contao"></i><span>Compilation & Language Theory</span></a>
-                    <a href="#"><i class="fas fa-cog"></i><span>Operating Systems</span></a>
-                    <a href="#"><i class="fa-solid fa-laptop-code"></i><span>Computer Architecture</span></a>
+                    <a href="#"><i class="fa-brands fa-contao"></i><span>Compilation & Language </span></a>
+                    <a href="#"><i class="fas fa-cog"></i><span>Système d'exploitation</span></a>
+                    <a href="#"><i class="fa-solid fa-laptop-code"></i><span>Architecture des Ordinateurs</span></a>
 
                 </div>
             </div>
