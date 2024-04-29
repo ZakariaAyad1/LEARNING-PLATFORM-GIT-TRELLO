@@ -74,13 +74,6 @@ body {
   /* padding-bottom: 7rem; */
 }
 
-body.dark {
-  --bleueG: #222;
-  --white: #fff;
-  --light-color: #aaa;
-  --light-bg: #333;
-  --border: 0.1rem solid rgba(255, 255, 255, 0.2);
-}
 
 body.active {
   padding-left: 0;
@@ -91,7 +84,44 @@ section {
   max-width: 1200px;
   margin: 0 auto;
 }
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
 
+.content-table thead tr {
+  background-color: #791c6d;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #791c6d;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #791c6d;
+}
 .btn,
 .option-btn,
 .delete-btn,
@@ -1111,24 +1141,6 @@ section {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-.footer {
-  position: sticky;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: var(--bleueG);
-  border-top: var(--border);
-  padding: 2.5rem 2rem;
-  text-align: center;
-  color: var(--white);
-  font-size: 2rem;
-  margin-top: 2rem;
-  z-index: 1000;
-}
-
-.footer span {
-  color: var(--main-color);
-}
 
 @media (max-width: 1200px) {
   body {

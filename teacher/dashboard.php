@@ -17,6 +17,23 @@ $stmt = $conn->prepare("SELECT u.name, u.email, p.title AS playlist_title, c.com
 $stmt->bindParam(1, $tutor_id);
 $stmt->execute();
 
+$select_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
+$select_contents->execute([$tutor_id]);
+$total_contents = $select_contents->rowCount();
+
+$select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
+$select_playlists->execute([$tutor_id]);
+$total_playlists = $select_playlists->rowCount();
+
+$select_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ?");
+$select_likes->execute([$tutor_id]);
+$total_likes = $select_likes->rowCount();
+
+$select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
+$select_comments->execute([$tutor_id]);
+$total_comments = $select_comments->rowCount();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +74,28 @@ $stmt->execute();
                 </table>
             </div>
         </div>
+
+        <div class="box-container">
+             <table class="content-table">
+                <thead>
+                <tr>
+                    <th class="table-content" >Total Contents</th>
+                    <th>Total Playlists</th>
+                    <th>Total Likes</th>
+                    <th>Total Comments</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?= $total_contents; ?></td>
+                        <td><?= $total_playlists; ?></td>
+                        <td><?= $total_likes; ?></td>
+                        <td><?= $total_comments; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+
     </section>
     <script src="../js/teacher_script.js"></script>
 </body>

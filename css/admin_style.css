@@ -1109,3 +1109,59 @@ background-color: #8e44ad ;
    }
 
 }
+.dashboard {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.box-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 2px;
+   max-width: 100%;
+   padding: 20px;
+}
+
+.box {
+   width: calc(185% - 200px);
+   left: 193px;
+   background-color: #f9f9f9;
+   border-radius: 80px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   padding: 20px;
+}
+.box1 {
+   width: calc(120% - 200 px);
+   background-color: #f9f9f9;
+   border-radius: 80px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   padding: 20px;
+   text-align: center;
+   position: relative ;
+   top: 600px;
+   right: 475px ;
+
+
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+}
+
+th, td {
+   padding: 10px;
+   text-align: left;
+   border-bottom: 1px solid #ddd;
+}
+
+th {
+   background-color: #f2f2f2;
+}
+
+.image-cell img {
+   max-width: 100px;
+   max-height: 100px;
+}
