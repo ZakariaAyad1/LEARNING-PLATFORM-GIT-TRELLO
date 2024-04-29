@@ -90,18 +90,18 @@ $total_bookmarked = $select_bookmark->rowCount();
                 <a href="teacher/register.php" class="inline-btn">get started</a>
             </div>
             <div class="box admin">
-                <h1>if you are admin tap here </h3>
+                <h3 class="title" >if you are admin tap here </h3>
                 <a href="admin/login.php" class="inline-btn">go to admin page </a>
             </div>
             <div class="box">
                 <h3 class="title">Modules</h3>
                 <div class="flex">
-                    <a href="playlist.php?get_id=6gYI2q4qQjrQAOMdPQrH"><i class="fas fa-code"></i><span>Programmation web1</span></a>
-                    <a href="#"><i class="fa-solid fa-gears"></i><span>Electronique Numérique</span></a>
-                    <a href="#"><i class="fa-solid fa-c"></i><span>Programmation avancé</span></a>
-                    <a href="#"><i class="fa-brands fa-contao"></i><span>Compilation & Theorie de Language</span></a>
-                    <a href="#"><i class="fas fa-cog"></i><span>Système d'exploitation</span></a>
-                    <a href="#"><i class="fa-solid fa-laptop-code"></i><span>Architecture des Ordinateurs</span></a>
+                    <a href="playlist.php?get_id=6gYI2q4qQjrQAOMdPQrH"><i class="fas fa-code"></i><span>web development</span></a>
+                    <a href="#"><i class="fa-solid fa-gears"></i><span>Digital Electronics</span></a>
+                    <a href="#"><i class="fa-solid fa-c"></i><span>Advanced Programming</span></a>
+                    <a href="#"><i class="fa-brands fa-contao"></i><span>Compilation & Language Theory</span></a>
+                    <a href="#"><i class="fas fa-cog"></i><span>Operating Systems</span></a>
+                    <a href="#"><i class="fa-solid fa-laptop-code"></i><span>Computer Architecture</span></a>
 
                 </div>
             </div>

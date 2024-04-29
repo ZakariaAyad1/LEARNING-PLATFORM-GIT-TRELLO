@@ -80,7 +80,7 @@ $total_bookmarked = $select_bookmark->rowCount();
          <a href="update.php" class="inline-btn">Update Profile</a>
          <form action="delete_account.php" method="post">
             <!-- Bouton "Supprimer mon compte" -->
-            <button type="submit" name="delete_account">delete account</button>
+            <button type="submit" class="inline-btn">delete account</button>
          </form>
          <!-- Afficher le message s'il existe -->
          <?php if(!empty($message)): ?>

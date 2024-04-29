@@ -1,13 +1,15 @@
 <?php
 if(isset($message)){
-   foreach($message as $message){
-      echo '
+    if (is_array($message)) { // Ensure $message is an array
+        foreach ($message as $msg) {
+            echo '
       <div class="message">
-         <span>'.$message.'</span>
+         <span>'.$msg.'</span>
          <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
       </div>
       ';
    }
+}
 }
 ?>
 
