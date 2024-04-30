@@ -49,16 +49,14 @@ $total_comments = $select_comments->rowCount();
 <body>
     <?php include '../components/teacher_header.php'; ?>
     <section class="dashboard">
-        <h1 class="heading">Subscriptions</h1>
-        <div class="box-container">
-            <div class="box">
-                <table>
+    <h1 class="heading">Dashboard</h1>
+        <h2 class="heading">Subscriptions</h2>
+                <table class="content-table">
                     <thead>
                         <tr>
                             <th>Student's name</th>
                             <th>Email</th>
                             <th>Playlist's name</th>
-                            <th>Student's questions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +65,6 @@ $total_comments = $select_comments->rowCount();
                             <td><?= htmlspecialchars($user['name']) ?></td>
                             <td><?= htmlspecialchars($user['email']) ?></td>
                             <td><?= htmlspecialchars($user['playlist_title']) ?></td>
-                            <td><?= htmlspecialchars($user['comment']) ?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -75,7 +72,7 @@ $total_comments = $select_comments->rowCount();
             </div>
         </div>
 
-        <div class="box-container">
+             <h2 class="heading">Statistics</h2>
              <table class="content-table">
                 <thead>
                 <tr>

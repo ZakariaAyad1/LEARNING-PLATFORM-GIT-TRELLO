@@ -1,6 +1,6 @@
 <?php
 if(isset($message)){
-    if (is_array($message)) { // Ensure $message is an array
+    if (is_array($message)) { 
         foreach ($message as $msg) {
             echo '
       <div class="message">

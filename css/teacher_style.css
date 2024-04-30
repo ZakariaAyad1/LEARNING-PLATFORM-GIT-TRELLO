@@ -78,15 +78,22 @@ body {
 body.active {
   padding-left: 0;
 }
-
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 section {
   padding: 2rem;
-  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%; padding: 2rem;
+  width: 100%; /* Ensures the section takes full width */
   margin: 0 auto;
 }
 .content-table {
   border-collapse: collapse;
   margin: 25px 0;
+  width : 100%;
   font-size: 0.9em;
   min-width: 400px;
   border-radius: 5px 5px 0 0;
@@ -94,33 +101,38 @@ section {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin : 25px 0;
+  font-size : 0.9em;
+  min-width : 400px;
+  border-radius: 5px 5px 0 0;
+  overflow : hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,.15);
+}
+
 .content-table thead tr {
-  background-color: #791c6d;
-  color: #ffffff;
+  background-color:#b06985;
+  color : #ffff;
   text-align: left;
-  font-weight: bold;
-}
+  font-weight : bold
 
+}
 .content-table th,
-.content-table td {
-  padding: 12px 15px;
-}
+.content-table td{
+  padding : 12px 15px;   
 
+}
 .content-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-
-.content-table tbody tr:nth-of-type(even) {
+.content-table tbody tr  {
   background-color: #f3f3f3;
 }
-
 .content-table tbody tr:last-of-type {
-  border-bottom: 2px solid #791c6d;
-}
+  border-bottom: 2px solid #b06985;
 
-.content-table tbody tr.active-row {
-  font-weight: bold;
-  color: #791c6d;
 }
 .btn,
 .option-btn,

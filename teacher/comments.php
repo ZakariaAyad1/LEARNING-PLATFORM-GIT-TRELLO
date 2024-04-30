@@ -99,8 +99,6 @@ if(isset($_POST['delete_comment'])){
 
     </section>
 
-    <?php include '../components/footer.php'; ?>
-
     <script src="../js/teacher_script.js"></script>
 
 </body>
