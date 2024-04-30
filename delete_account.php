@@ -8,25 +8,41 @@ if(isset($_COOKIE['user_id'])){
     header('location:login.php');
 }
 
+$select_user = $conn->prepare("SELECT name FROM users WHERE id = ?");
+$select_user->execute([$user_id]);
+$user = $select_user->fetch(PDO::FETCH_ASSOC);
+$user_name = $user['name'];
+
+$message = '';
+
 if(isset($_POST['delete_account'])) {
-    // Vérifier d'abord si une demande de suppression existe déjà pour cet utilisateur
-    $select_existing_request = $conn->prepare("SELECT id FROM deletion_requests WHERE user_id = ?");
-    $select_existing_request->execute([$user_id]);
-    $existing_request = $select_existing_request->fetchColumn();
+    $insert_request = $conn->prepare("INSERT INTO deletion_requests (user_id, name) VALUES (?, ?)");
+    $insert_request->execute([$user_id, $user_name]);
+    
+    // Vérifier si la demande a été acceptée ou refusée par l'administrateur
+    $select_request_status = $conn->prepare("SELECT admin_id FROM deletion_requests WHERE user_id = ?");
+    $select_request_status->execute([$user_id]);
+    $request_status = $select_request_status->fetchColumn();
+    
+    if($request_status) {
+        // Si la demande est acceptée, rediriger l'utilisateur vers la page register.php
+        header('location: home.php');
+        exit(); // Terminer le script pour éviter toute exécution supplémentaire
+    } else {
+        // Si la demande est toujours en attente ou a été refusée, vérifier si elle a été refusée par l'administrateur
+        $select_request_status = $conn->prepare("SELECT admin_id FROM deletion_requests WHERE user_id = ?");
+        $select_request_status->execute([$user_id]);
+        $request_status = $select_request_status->fetchColumn();
 
-    // Si aucune demande de suppression n'existe pas encore, insérer une nouvelle demande
-    if(!$existing_request) {
-        // Récupérer le nom de l'utilisateur à partir de la table users
-        $select_user = $conn->prepare("SELECT name FROM users WHERE id = ?");
-        $select_user->execute([$user_id]);
-        $user = $select_user->fetch(PDO::FETCH_ASSOC);
+        if(!$request_status) {
+            // Si la demande a été refusée, le message de confirmation doit disparaître
+            $message = '';
+        } else {
+            // Si la demande est toujours en attente, afficher le message
+            $message = "Votre demande de suppression a été envoyée à l'administrateur pour examen.";
+        }
 
-        // Insérer une demande de suppression dans la table deletion_requests
-        $insert_request = $conn->prepare("INSERT INTO deletion_requests (user_id, name) VALUES (?, ?)");
-        $insert_request->execute([$user_id, $user['name']]);
+        
     }
-
-    // Rediriger l'utilisateur vers une page de confirmation
-    header('location: profile.php');
 }
 ?>

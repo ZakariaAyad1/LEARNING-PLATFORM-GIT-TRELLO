@@ -248,6 +248,14 @@ section {
   margin-bottom: 2rem;
   text-align: center;
 }
+.sub-heading {
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--white);
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  
+}
 
 .header {
   background-color: var(--bleueG);
@@ -303,20 +311,20 @@ section {
 
 .header .flex .icons div {
   font-size: 2rem;
-  color: var(--light-color);
-  border-radius: 0.5rem;
+  color: var(--white);
+  border-radius: 25px;
   height: 4.5rem;
   cursor: pointer;
   width: 4.5rem;
   line-height: 4.4rem;
-  background-color: var(--light-bg);
+  background-color: var(--oragen);
   text-align: center;
   margin-left: 0.5rem;
 }
 
 .header .flex .icons div:hover {
   background-color: var(--white);
-  color: var(--bleueG);
+  color: var(--oragen);
 }
 
 #search-btn {

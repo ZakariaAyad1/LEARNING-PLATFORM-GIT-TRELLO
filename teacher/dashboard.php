@@ -50,7 +50,28 @@ $total_comments = $select_comments->rowCount();
     <?php include '../components/teacher_header.php'; ?>
     <section class="dashboard">
     <h1 class="heading">Dashboard</h1>
-        <h2 class="heading">Subscriptions</h2>
+    <h2 class="sub-heading">Statistics</h2>
+             <table class="content-table">
+                <thead>
+                <tr>
+                    <th class="table-content">Total Contents</th>
+                    <th>Total Playlists</th>
+                    <th>Total Likes</th>
+                    <th>Total Comments</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?= $total_contents; ?></td>
+                        <td><?= $total_playlists; ?></td>
+                        <td><?= $total_likes; ?></td>
+                        <td><?= $total_comments; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+
+    
+        <h2 class="sub-heading">Subscriptions</h2>
                 <table class="content-table">
                     <thead>
                         <tr>
@@ -71,27 +92,9 @@ $total_comments = $select_comments->rowCount();
                 </table>
             </div>
         </div>
+        <br>
+        
 
-             <h2 class="heading">Statistics</h2>
-             <table class="content-table">
-                <thead>
-                <tr>
-                    <th class="table-content" >Total Contents</th>
-                    <th>Total Playlists</th>
-                    <th>Total Likes</th>
-                    <th>Total Comments</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $total_contents; ?></td>
-                        <td><?= $total_playlists; ?></td>
-                        <td><?= $total_likes; ?></td>
-                        <td><?= $total_comments; ?></td>
-                    </tr>
-                </tbody>
-            </table>
-</div>
 
     </section>
     <script src="../js/teacher_script.js"></script>
