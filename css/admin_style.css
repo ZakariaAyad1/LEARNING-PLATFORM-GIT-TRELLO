@@ -167,6 +167,42 @@ section{
    transition: .2s linear;
 }
 
+.suppression {
+  font-size: 30px solid;
+  margin-left: 15px;
+  color: #aaa;
+
+}
+
+
+.attente{
+  font-size: 25px;
+  color: #dddddd;
+  margin-left: 30px;
+}
+
+li{
+  font-size:25px;
+  color: whitesmoke;
+  padding-top: 30px;
+  margin-left: 30px;
+}
+
+button{
+  border: 1px solid black;
+  width: 120px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  height: 50px;
+  color: whitesmoke;
+  margin-left: 20px;
+  background-color: rgb(223, 131, 223);
+}
+button:hover{
+  color:rgb(126, 43, 126);
+}
+
+
 .message i:hover{
    transform: rotate(90deg);
 }

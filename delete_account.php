@@ -26,7 +26,7 @@ if(isset($_POST['delete_account'])) {
     
     if($request_status) {
         // Si la demande est acceptée, rediriger l'utilisateur vers la page register.php
-        header('location: home.php');
+        header('location: register.php');
         exit(); // Terminer le script pour éviter toute exécution supplémentaire
     } else {
         // Si la demande est toujours en attente ou a été refusée, vérifier si elle a été refusée par l'administrateur
@@ -39,7 +39,7 @@ if(isset($_POST['delete_account'])) {
             $message = '';
         } else {
             // Si la demande est toujours en attente, afficher le message
-            $message = "Votre demande de suppression a été envoyée à l'administrateur pour examen.";
+            $message = "Your deletion request has been sent to the administrator for review ❤️";
         }
 
         

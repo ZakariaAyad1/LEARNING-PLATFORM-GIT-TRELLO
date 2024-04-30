@@ -78,7 +78,7 @@ if(isset($message)){
          ?>
          <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
-         <span><?= $fetch_profile['profession']; ?></span>
+         <span><?= isset($fetch_profile['profession']) ? $fetch_profile['profession'] : 'Teacher'; ?></span>
          <a href="profile.php" class="btn">view profile</a>
          <?php
             }else{

@@ -138,6 +138,7 @@ section {
 .option-btn,
 .delete-btn,
 .inline-btn,
+.teacher-btn,
 .inline-option-btn,
 .inline-delete-btn {
   border-radius: 3rem;
@@ -158,12 +159,14 @@ section {
 }
 
 .inline-btn,
+.teacher-btn,
 .inline-option-btn,
 .inline-delete-btn {
   display: inline-block;
 }
 
 .btn,
+.teacher-btn,
 .inline-btn {
   background-color: var(--main-color);
 }
@@ -174,11 +177,13 @@ section {
 }
 
 .delete-btn,
+.teacher-btn,
 .inline-delete-btn {
   background-color: var(--red);
 }
 
 .btn:hover,
+.teacher-btn:hover,
 .option-btn:hover,
 .delete-btn:hover,
 .inline-btn:hover,
@@ -1242,4 +1247,55 @@ section {
   .view-content .container .video {
     height: auto;
   }
+}
+
+.btn,
+.teacher-btn{
+  border-radius: 999px;
+  padding: 1rem 3rem;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn,
+.option-btn,
+.delete-btn{
+  display: block;
+  width: 100%;
+}
+.account-btn{
+  width: fit-content;
+  background-color: #e7005e;
+}
+
+.teacher-btn{
+  display: inline-block;
+}
+
+.btn,
+.teacher-btn{
+  background-color: var(--main-color);
+}
+
+.teacher-btn{
+  background-color: #e7005e;
+}
+
+.teacher-btn{
+  background-color: var(--red);
+}
+
+.btn:hover,
+.teacher-btn:hover{
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.flex-btn{
+  display:flex;
+  gap: 1rem;
 }
