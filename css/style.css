@@ -1199,7 +1199,7 @@ section{
 
 .form-container form{
   background-color: var(--white);
-  border-radius: .5rem;
+  border-radius: 2rem;
   padding: 2rem;
 }
 
@@ -1246,16 +1246,17 @@ section{
 
 .form-container form .box{
   width: 100%;
-  border-radius: .5rem;
+  border-radius: 2rem;
   margin: 1rem 0;
-  font-size: 1.8rem;
-  color: var(--black);
+  font-size: 1rem 0;
+  color: var(--white);
   padding: 1.4rem;
   background-color: var(--light-bg);
 }
 
 .form-container .flex{
   display: flex;
+  flex-direction: row;
   gap: 2rem;
 }
 
