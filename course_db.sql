@@ -100,7 +100,7 @@ CREATE TABLE `Announcements` (
     `tutor_id` varchar(20) NOT NULL,
     `title` VARCHAR(100) NOT NULL,
     `content` TEXT NOT NULL,
-    `status` varchar(20) NOT NULL DEFAULT 'deactive'
+    `status` varchar(20) NOT NULL DEFAULT 'deactive',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
