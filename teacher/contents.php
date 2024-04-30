@@ -104,22 +104,6 @@ if(isset($_POST['delete_video'])){
 
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="../js/teacher_script.js"></script>
 
 </body>
