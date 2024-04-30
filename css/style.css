@@ -68,6 +68,7 @@ section{
 .option-btn,
 .delete-btn,
 .inline-btn,
+.account-btn,
 .inline-option-btn,
 .inline-delete-btn{
   border-radius: 999px;
@@ -86,14 +87,20 @@ section{
   display: block;
   width: 100%;
 }
+.account-btn{
+  width: fit-content;
+  background-color: #e7005e;
+}
 
 .inline-btn,
+.account-btn,
 .inline-option-btn,
 .inline-delete-btn{
   display: inline-block;
 }
 
 .btn,
+.account-btn,
 .inline-btn{
   background-color: var(--main-color);
 }
@@ -104,11 +111,13 @@ section{
 }
 
 .delete-btn,
+.account-btn,
 .inline-delete-btn{
   background-color: var(--red);
 }
 
 .btn:hover,
+.account-btn:hover,
 .option-btn:hover,
 .delete-btn:hover,
 .inline-btn:hover,
