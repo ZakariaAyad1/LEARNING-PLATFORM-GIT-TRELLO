@@ -9,22 +9,7 @@
       header('location:login.php');
    }
 
-   $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
-   $select_playlists->execute([$tutor_id]);
-   $total_playlists = $select_playlists->rowCount();
-
-   $select_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
-   $select_contents->execute([$tutor_id]);
-   $total_contents = $select_contents->rowCount();
-
-   $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ?");
-   $select_likes->execute([$tutor_id]);
-   $total_likes = $select_likes->rowCount();
-
-   $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
-   $select_comments->execute([$tutor_id]);
-   $total_comments = $select_comments->rowCount();
-
+   
 ?>
 
 <!DOCTYPE html>
@@ -58,28 +43,7 @@
          <span><?= $fetch_profile['profession']; ?></span>
          <a href="update.php" class="inline-btn">update profile</a>
       </div>
-      <div class="flex">
-         <div class="box">
-            <span><?= $total_playlists; ?></span>
-            <p>total playlists</p>
-            <a href="playlists.php" class="btn">view playlists</a>
-         </div>
-         <div class="box">
-            <span><?= $total_contents; ?></span>
-            <p>total videos</p>
-            <a href="contents.php" class="btn">view contents</a>
-         </div>
-         <div class="box">
-            <span><?= $total_likes; ?></span>
-            <p>total likes</p>
-            <a href="contents.php" class="btn">view contents</a>
-         </div>
-         <div class="box">
-            <span><?= $total_comments; ?></span>
-            <p>total comments</p>
-            <a href="comments.php" class="btn">view comments</a>
-         </div>
-      </div>
+      
    </div>
 
 </section>

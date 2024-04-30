@@ -31,12 +31,7 @@ if(isset($_POST['submit'])){
       $message[] = 'username updated successfully!';
    }
 
-   if(!empty($profession)){
-      $update_profession = $conn->prepare("UPDATE `tutors` SET profession = ? WHERE id = ?");
-      $update_profession->execute([$profession, $tutor_id]);
-      $message[] = 'profession updated successfully!';
-   }
-
+  
    if(!empty($email)){
       $select_email = $conn->prepare("SELECT email FROM `tutors` WHERE id = ? AND email = ?");
       $select_email->execute([$tutor_id, $email]);

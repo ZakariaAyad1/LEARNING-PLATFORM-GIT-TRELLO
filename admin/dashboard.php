@@ -44,20 +44,16 @@ $tutors = $select_tutors->fetchAll();
    
 <section class="dashboard">
 
-   <h1 class="heading">Tableau de bord</h1>
-
-   <div class="box-container">
-
-      <div class="box">
-         <h2>Tutors</h2>
-         <table>
+   <h1 class="heading">Dashboard</h1>
+    <h2 class="heading" >Teachers</h2>
+         <table class="content-table">
             <thead>
                <tr>
                   <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Password</th>
-                  <th>Image</th>
+                  
                </tr>
             </thead>
             <tbody>
@@ -67,23 +63,32 @@ $tutors = $select_tutors->fetchAll();
                      <td><?php echo $tutor['name']; ?></td>
                      <td><?php echo $tutor['email']; ?></td>
                      <td><?php echo $tutor['password']; ?></td>
-                     <td class="image-cell"><img src="<?php echo $tutor['image']; ?>" alt="Tutor Image"></td>
+                    
                   </tr>
                <?php } ?>
             </tbody>
          </table>
-      </div>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
 
-      <div class="box1">
-         <h2>Users</h2>
-         <table>
+   <h2 class="heading" >Students</h2>
+   <table class="content-table">
             <thead>
                <tr>
                   <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Password</th>
-                  <th>Image</th>
+                 
                </tr>
             </thead>
             <tbody>
@@ -93,14 +98,14 @@ $tutors = $select_tutors->fetchAll();
                      <td><?php echo $user['name']; ?></td>
                      <td><?php echo $user['email']; ?></td>
                      <td><?php echo $user['password']; ?></td>
-                     <td class="image-cell"><img src="<?php echo $user['image']; ?>" alt="User Image"></td>
+                   
                   </tr>
                <?php } ?>
             </tbody>
          </table>
-      </div>
+     
 
-   </div>
+   
    
 </section>
 

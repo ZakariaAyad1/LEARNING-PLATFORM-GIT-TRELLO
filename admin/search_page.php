@@ -25,8 +25,6 @@ if(isset($_POST['delete_video'])){
       unlink('../uploaded_files/'.$fetch_video['video']);
       $delete_likes = $conn->prepare("DELETE FROM `likes` WHERE content_id = ?");
       $delete_likes->execute([$delete_id]);
-      $delete_comments = $conn->prepare("DELETE FROM `comments` WHERE content_id = ?");
-      $delete_comments->execute([$delete_id]);
       $delete_content = $conn->prepare("DELETE FROM `content` WHERE id = ?");
       $delete_content->execute([$delete_id]);
       $message[] = 'video deleted!';
