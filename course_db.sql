@@ -100,9 +100,16 @@ CREATE TABLE `Announcements` (
     `tutor_id` varchar(20) NOT NULL,
     `title` VARCHAR(100) NOT NULL,
     `content` TEXT NOT NULL,
+    `status` varchar(20) NOT NULL DEFAULT 'deactive',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `deletion_tutors` (
+  `request_id` int(11) NOT NULL,
+  `tutor_id` int(11) NOT NULL,
+  `tutor_name` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --insert admin
 INSERT INTO `admin`( `name`, `email`, `password`, `image`) VALUES ('Admin','chioua.hiba1@gmail.com','ab28cfc74820d6462adabc4f2c4221b803a83507','cDM2EJ51so4lEcXg3O0M.avif');

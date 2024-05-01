@@ -138,6 +138,7 @@ section {
 .option-btn,
 .delete-btn,
 .inline-btn,
+.teacher-btn,
 .inline-option-btn,
 .inline-delete-btn {
   border-radius: 3rem;
@@ -158,12 +159,14 @@ section {
 }
 
 .inline-btn,
+.teacher-btn,
 .inline-option-btn,
 .inline-delete-btn {
   display: inline-block;
 }
 
 .btn,
+.teacher-btn,
 .inline-btn {
   background-color: var(--main-color);
 }
@@ -174,11 +177,13 @@ section {
 }
 
 .delete-btn,
+.teacher-btn,
 .inline-delete-btn {
   background-color: var(--red);
 }
 
 .btn:hover,
+.teacher-btn:hover,
 .option-btn:hover,
 .delete-btn:hover,
 .inline-btn:hover,

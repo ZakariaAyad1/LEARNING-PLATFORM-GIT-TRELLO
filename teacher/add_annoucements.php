@@ -8,20 +8,17 @@ if(isset($_COOKIE['tutor_id'])){
    header('location:login.php');
 }
 
-if(isset($_POST['submit'])){
-   $title = $_POST['title'];
-   $content = $_POST['content'];
-
-   // Sanitize input
-   $title = filter_var($title, FILTER_SANITIZE_STRING);
-   $content = filter_var($content, FILTER_SANITIZE_STRING);
-
-   // Insert announcement into database
-   $insert_announcement = $conn->prepare("INSERT INTO Announcements (tutor_id, title, content) VALUES (?, ?, ?)");
-   $insert_announcement->execute([$tutor_id, $title, $content]);
-
-   $message[] = 'Announcement added successfully!';
-}
+// Functionality to add announcement
+if(isset($_POST['add_announcement'])){
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $status = $_POST['status'];
+    
+    // Insert the new announcement into the database
+    $add_announcement = $conn->prepare("INSERT INTO `Announcements` (tutor_id, title, content, status) VALUES (?, ?, ?, ?)");
+    $add_announcement->execute([$tutor_id, $title, $content, $status]);
+    $message[] = 'Announcement added successfully!';
+ }
 
 ?>
 
@@ -52,12 +49,18 @@ if(isset($_POST['submit'])){
         <h1 class="heading">Add Announcement</h1>
 
         <form action="" method="post">
+        <p>Announcement status <span>*</span></p>
+            <select name="status" class="box" required>
+                <option value="" selected disabled>Status</option>
+                <option value="active">Active</option>
+                <option value="deactive">Desactive</option>
+            </select>
             <p>Announcement Title <span>*</span></p>
             <input type="text" name="title" required placeholder="Enter announcement title" class="box">
             <p>Announcement Content <span>*</span></p>
             <textarea name="content" required placeholder="Write announcement content" class="box" cols="30"
                 rows="10"></textarea>
-            <input type="submit" value="Add Announcement" name="submit" class="btn">
+            <input type="submit" value="Add Announcement" name="add_announcement" class="btn">
         </form>
 
     </section>

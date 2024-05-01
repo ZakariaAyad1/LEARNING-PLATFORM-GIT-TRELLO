@@ -26,9 +26,19 @@ if(isset($_POST['delete_account'])) {
     $insert_request = $conn->prepare("INSERT INTO deletion_requests (user_id) VALUES (?)");
     $insert_request->execute([$user_id]);
     
-    $message = "Votre demande de suppression a été envoyée à l'administrateur pour examen.";
+    $message = "Your deletion request has been sent to the administrator for review ❤️";
 }
 
+// Vérifier si la demande de suppression a été acceptée
+$select_request_status = $conn->prepare("SELECT admin_id FROM deletion_requests WHERE user_id = ?");
+$select_request_status->execute([$user_id]);
+$request_status = $select_request_status->fetchColumn();
+
+if($request_status) {
+    // Si la demande est acceptée, rediriger l'utilisateur vers la page register.php
+    header('location: register.php');
+    exit(); // Terminer le script pour éviter toute exécution supplémentaire
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,11 +75,11 @@ if(isset($_POST['delete_account'])) {
          <p>Student</p>
          <a href="update.php" class="inline-btn">Update Profile</a>
          <form action="profile.php" method="post">
-            <button type="submit" name="delete_account" class="account-btn">Supprimer mon compte</button>
+            <button type="submit" name="delete_account" class="account-btn">Delete My Account</button>
          </form>
          <?php if(!empty($message)): ?>
-        <p><?php echo $message; ?></p>
-        <?php endif; ?>
+            <p><?php echo $message; ?></p>
+         <?php endif; ?>
       </div>
       </div>
 
@@ -118,11 +128,3 @@ if(isset($_POST['delete_account'])) {
    
 </body>
 </html>
-
-
-
-
-
-
-
-    

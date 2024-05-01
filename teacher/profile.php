@@ -25,6 +25,16 @@
    $select_comments->execute([$tutor_id]);
    $total_comments = $select_comments->rowCount();
 
+
+   $message = '';
+
+if(isset($_POST['delete_teacher'])) {
+    $insert_request = $conn->prepare("INSERT INTO deletion_tutors (tutor_id) VALUES (?)");
+    $insert_request->execute([$tutor_id]);
+    
+    $message = "Your deletion request has been sent to the administrator for review";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +65,14 @@
       <div class="tutor">
          <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
-         <span><?= $fetch_profile['profession']; ?></span>
+         <span>Teacher</span>
          <a href="update.php" class="inline-btn">update profile</a>
+         <form action="profile.php" method="post">
+            <button type="submit" name="delete_teacher" class="teacher-btn">delete My account</button>
+         </form>
+         <?php if(!empty($message)): ?>
+        <p><?php echo $message; ?></p>
+        <?php endif; ?>
       </div>
       <div class="flex">
          <div class="box">
