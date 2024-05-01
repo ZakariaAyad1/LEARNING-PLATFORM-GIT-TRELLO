@@ -188,19 +188,33 @@ li{
   margin-left: 30px;
 }
 
-button{
+ .accept{
   border: 1px solid black;
-  width: 120px;
+  width: 100px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;
+  border-radius: 10px;
   height: 50px;
   color: whitesmoke;
   margin-left: 20px;
-  background-color: rgb(223, 131, 223);
+  background-color:  #a393eb;
 }
-button:hover{
-  color:rgb(126, 43, 126);
+.reject{
+  border: 1px solid black;
+  width: 100px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  border-radius: 10px;
+  height: 50px;
+  color: whitesmoke;
+  margin-left: 20px;
+  background-color:  #5e63b6;
 }
+.accept:hover,
+.reject:hover{
+  background-color: rgb(255,255,255,.2);
+}
+
 
 
 .message i:hover{
