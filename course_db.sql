@@ -116,7 +116,17 @@ INSERT INTO `admin`( `name`, `email`, `password`, `image`) VALUES ('Admin','chio
 COMMIT;
 
 
+
+
+
 password:
 admin@
+
+ALTER TABLE `content`
+ADD COLUMN `prerequisites` TEXT NOT NULL AFTER `description`;
+
+ALTER TABLE `content`
+ADD COLUMN `keywords` VARCHAR(255) NOT NULL AFTER `description`;
+
 
 
