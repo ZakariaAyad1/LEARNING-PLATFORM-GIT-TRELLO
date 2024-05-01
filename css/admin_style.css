@@ -108,7 +108,7 @@ section{
 
 .btn,
 .inline-btn{
-   background-color: var(--main-color);
+   background-color: var(--purple);
 }
 
 .option-btn,
@@ -435,7 +435,7 @@ button:hover{
 
 .form-container form{
    background-color: var(--white);
-   border-radius: .5rem;
+   border-radius: 15px;
    padding: 2rem;
 }
 
@@ -443,9 +443,6 @@ button:hover{
    width: 50rem;
 }
 
-.form-container .register{
-   width: 80rem;
-}
 
 .form-container form h3{
    text-align: center;
@@ -482,7 +479,7 @@ button:hover{
 
 .form-container form .box{
    width: 100%;
-   border-radius: .5rem;
+   border-radius: 15px;
    margin: 1rem 0;
    font-size: 1.8rem;
    color: var(--black);
