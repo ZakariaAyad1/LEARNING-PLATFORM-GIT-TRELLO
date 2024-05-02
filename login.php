@@ -59,28 +59,6 @@ if(isset($_POST['submit'])){
             <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
             <p>Your password <span>*</span></p>
             <input type="password" name="pass" placeholder="enter your password" maxlength="50" required class="box">
-            <p>User Type<span>*</span></p>
-            <p>Course Playlist</p>
-            <select name="userType" class="box">
-                <option value="" disabled selected>Select playlist</option>
-                <?php
-                $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
-                $select_playlists->execute([$tutor_id]);
-                if ($select_playlists->rowCount() > 0) {
-                    while ($fetch_playlist = $select_playlists->fetch(PDO::FETCH_ASSOC)) {
-                ?>
-                <option value="<?= $fetch_playlist['id']; ?>"><?= $fetch_playlist['title']; ?></option>
-                <?php
-                    }
-                } else {
-                    echo '<option value="" disabled>No playlist created yet!</option>';
-                }
-                ?>
-            </select>
-
-
-
-
             <p class="link">Don't have an account? <a href="register.php">Register now</a></p>
             <input type="submit" name="submit" value="Login now" class="btn">
         </form>
