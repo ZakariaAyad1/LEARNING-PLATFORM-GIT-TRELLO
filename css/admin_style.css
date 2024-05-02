@@ -248,33 +248,6 @@ button:hover{
    font-weight: bolder;
 }
 
-.header .flex .search-form{
-   width: 50rem;
-   border-radius: 25px;
-   display: flex;
-   align-items: center;
-   gap: 2rem;
-   padding: 1.5rem 2rem;
-   background-color: var(--light-bg);
-}
-
-.header .flex .search-form input{
-   width: 100%;
-   background:none;
-   font-size: 2rem;
-   color: var(--black);
-}
-
-.header .flex .search-form button{
-   font-size: 2rem;
-   color: var(--black);
-   cursor: pointer;
-   background: none;
-}
-
-.header .flex .search-form button:hover{
-   color: var(--purple);
-}
 
 .header .flex .icons div{
    font-size: 2rem;
@@ -294,9 +267,6 @@ button:hover{
    color:var(--white);
 }
 
-#search-btn{
-   display: none;
-}
 
 .header .flex .profile{
    position: absolute;
@@ -982,38 +952,7 @@ button:hover{
 
 }
 
-@media (max-width:768px){
 
-   #search-btn{
-      display: inline-block;
-   }
-
-   .header .flex .search-form{
-      position: absolute;
-      top:99%; left: 0; right: 0;
-      width: auto;
-      border-top: var(--border);     
-      border-bottom: var(--border);
-      background-color: var(--purple);
-      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-      transition: .2s linear;
-   }
-
-   .header .flex .search-form.active{
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-   }
-
-   .form-container .flex{
-      display: flex;
-      gap: 0;
-      flex-flow: column;
-   }
-
-   .view-content .container .video{
-      height: 30rem;
-   }
-
-}
 #respond{
 border: 1px solid black;
 color: white;
