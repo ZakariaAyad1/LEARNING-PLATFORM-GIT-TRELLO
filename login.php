@@ -51,34 +51,41 @@ if(isset($_POST['submit'])){
 </head>
 
 <body>
-
-    <?php include 'components/user_header.php'; ?>
-
     <section class="form-container">
 
         <form action="" method="post" enctype="multipart/form-data" class="login">
-            <h3>welcome back!</h3>
-            <p>your email <span>*</span></p>
+            <h3>Welcome back!</h3>
+            <p>Your email <span>*</span></p>
             <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
-            <p>your password <span>*</span></p>
-            <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-            <p class="link">don't have an account? <a href="register.php">register now</a></p>
-            <input type="submit" name="submit" value="login now" class="btn">
+            <p>Your password <span>*</span></p>
+            <input type="password" name="pass" placeholder="enter your password" maxlength="50" required class="box">
+            <p>User Type<span>*</span></p>
+            <p>Course Playlist</p>
+            <select name="userType" class="box">
+                <option value="" disabled selected>Select playlist</option>
+                <?php
+                $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
+                $select_playlists->execute([$tutor_id]);
+                if ($select_playlists->rowCount() > 0) {
+                    while ($fetch_playlist = $select_playlists->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                <option value="<?= $fetch_playlist['id']; ?>"><?= $fetch_playlist['title']; ?></option>
+                <?php
+                    }
+                } else {
+                    echo '<option value="" disabled>No playlist created yet!</option>';
+                }
+                ?>
+            </select>
+
+
+
+
+            <p class="link">Don't have an account? <a href="register.php">Register now</a></p>
+            <input type="submit" name="submit" value="Login now" class="btn">
         </form>
 
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- custom js file link  -->
     <script src="js/script.js"></script>

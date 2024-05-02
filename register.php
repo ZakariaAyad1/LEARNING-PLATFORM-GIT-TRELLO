@@ -76,8 +76,6 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
-
 <section class="form-container">
 
    <form class="register" action="" method="post" enctype="multipart/form-data">
@@ -87,7 +85,7 @@ if(isset($_POST['submit'])){
             <p>your name <span>*</span></p>
             <input type="text" name="name" placeholder="enter your name" maxlength="50" required class="box">
             <p>your email <span>*</span></p>
-            <input type="email" name="email" placeholder="enter your email" maxlength="20" required class="box">
+            <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
          </div>
          <div class="col">
             <p>your password <span>*</span></p>

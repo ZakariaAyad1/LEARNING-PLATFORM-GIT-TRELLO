@@ -55,7 +55,7 @@ if(isset($message)){
 }
 ?>
 
-<!-- register section starts  -->
+<!-- login section starts  -->
 
 <section class="form-container">
 
@@ -71,7 +71,7 @@ if(isset($message)){
 
 </section>
 
-<!-- registe section ends -->
+<!-- login section ends -->
 
 
    

@@ -57,57 +57,23 @@ if(isset($message)){
 }
 ?>
 
-    <!-- register section starts  -->
+    <!-- login section starts  -->
 
     <section class="form-container">
 
         <form action="" method="post" enctype="multipart/form-data" class="login">
             <h3>Hi, welcome back!</h3>
-            <p>your email <span>*</span></p>
-            <input type="email" name="email" placeholder="enter your email" maxlength="20" required class="box">
-            <p>your password <span>*</span></p>
-            <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-            <p class="link">don't have an account? <a href="register.php">register</a></p>
+            <p>Your email <span>*</span></p>
+            <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
+            <p>Your password <span>*</span></p>
+            <input type="password" name="pass" placeholder="enter your password" maxlength="50" required class="box">
+            <p class="link">Don't have an account? <a href="register.php">Register</a></p>
             <input type="submit" name="submit" value="login now" class="btn">
         </form>
 
     </section>
 
-    <!-- registe section ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-    let darkMode = localStorage.getItem('dark-mode');
-    let body = document.body;
-
-    const enabelDarkMode = () => {
-        body.classList.add('dark');
-        localStorage.setItem('dark-mode', 'enabled');
-    }
-
-    const disableDarkMode = () => {
-        body.classList.remove('dark');
-        localStorage.setItem('dark-mode', 'disabled');
-    }
-
-    if (darkMode === 'enabled') {
-        enabelDarkMode();
-    } else {
-        disableDarkMode();
-    }
-    </script>
+    <!-- login section ends -->
 
 </body>
 
