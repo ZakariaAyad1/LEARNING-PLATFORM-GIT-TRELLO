@@ -41,11 +41,11 @@ if(isset($_COOKIE['user_id'])){
          if($select_announcements->rowCount() > 0){
             while($fetch_announcement = $select_announcements->fetch(PDO::FETCH_ASSOC)){
       ?>
-      <div class="box">
+      <div class="box" >
          <h3 class="title"><?= $fetch_announcement['title']; ?></h3>
          <small><?= $fetch_announcement['created_at']; ?></small>
-         <!-- Add View Announcement button -->
-         <a href="view_annoucement.php?get_id=<?= $announcement_id; ?>" class="btn">View Announcement</a>
+         <p class="content"><?= $fetch_announcement['content']; ?> </p>
+         
       </div>
       <?php
          }
